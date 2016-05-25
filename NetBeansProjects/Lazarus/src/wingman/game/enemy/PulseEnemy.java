@@ -1,0 +1,40 @@
+package wingman.game.enemy;
+
+import java.awt.Point;
+
+import wingman.WingmanWorld;
+import wingman.game.Ship;
+import wingman.modifiers.motions.SimpleFiringMotion;
+
+import wingman.modifiers.weapons.PulseWeapon;
+
+/**
+ *
+ * @author noslide
+ */
+public class PulseEnemy extends Ship {
+
+    /**
+     *
+     * @param location
+     */
+    public PulseEnemy(int location){
+		this(location, new Point(0,3), 10, 30);
+		
+		motion = new SimpleFiringMotion(30);
+	}
+	
+    /**
+     *
+     * @param location
+     * @param speed
+     * @param strength
+     * @param fireInterval
+     */
+    public PulseEnemy(int location, Point speed, int strength, int fireInterval){
+		super(location, speed, strength, WingmanWorld.sprites.get("enemy3"));
+		this.weapon = new PulseWeapon();
+		
+		motion = new SimpleFiringMotion(fireInterval);
+	}
+}
